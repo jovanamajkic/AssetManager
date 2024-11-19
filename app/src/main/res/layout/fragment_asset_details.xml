@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/layout_padding"
+    tools:context=".ui.assets.AssetDetailsFragment">
+
+    <ImageView
+        android:id="@+id/iv_asset_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:contentDescription="@string/asset_image"
+        android:src="@drawable/ic_qr_scan" />
+
+    <TextView
+        android:id="@+id/tv_asset_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/details_title"
+        android:layout_marginTop="@dimen/field_margin"
+        style="@style/TextAppearance.AppCompat.Title" />
+
+    <TextView
+        android:id="@+id/tv_details_barcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/field_margin"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/field_margin"
+        style="@style/TextAppearance.AppCompat.Subhead"
+        app:drawableStartCompat="@drawable/ic_qr_scan" />
+
+    <TextView
+        android:id="@+id/tv_details_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/field_margin"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/field_margin"
+        style="@style/TextAppearance.AppCompat.Subhead"
+        app:drawableStartCompat="@drawable/ic_info"/>
+
+    <TextView
+        android:id="@+id/tv_details_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/field_margin"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/field_margin"
+        app:drawableStartCompat="@drawable/ic_money"
+        style="@style/TextAppearance.AppCompat.Subhead"/>
+
+    <TextView
+        android:id="@+id/tv_details_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/field_margin"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/field_margin"
+        app:drawableStartCompat="@drawable/ic_calendar"
+        style="@style/TextAppearance.AppCompat.Subhead"/>
+
+    <TextView
+        android:id="@+id/tv_details_employee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/field_margin"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/field_margin"
+        app:drawableStartCompat="@drawable/ic_person"
+        style="@style/TextAppearance.AppCompat.Subhead"/>
+
+    <TextView
+        android:id="@+id/tv_details_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/field_margin"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/field_margin"
+        app:drawableStartCompat="@drawable/ic_location"
+        style="@style/TextAppearance.AppCompat.Subhead"/>
+
+    <fragment
+        android:id="@+id/details_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_height="250dp" />
+
+</LinearLayout>

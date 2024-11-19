@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="@dimen/item_padding">
+
+    <ImageView
+        android:id="@+id/asset_image"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="6dp"
+        android:contentDescription="@string/asset_image"
+        android:src="@drawable/ic_menu_asset"/>
+
+    <TextView
+        android:id="@+id/tv_barcode"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/description_height"
+        android:layout_toStartOf="@id/btn_edit_asset"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@id/asset_image"
+        android:textSize="@dimen/description_text_size"/>
+
+    <TextView
+        android:id="@+id/tv_asset_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_barcode"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/asset_image"
+        android:layout_toStartOf="@id/btn_edit_asset"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/title_text_size"/>
+
+    <ImageButton
+        android:id="@+id/btn_edit_asset"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@id/btn_delete_asset"
+        android:contentDescription="@string/edit"
+        android:src="@android:drawable/ic_menu_edit"
+        android:background="@android:color/transparent" />
+
+    <ImageButton
+        android:id="@+id/btn_delete_asset"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/delete_asset"
+        android:src="@android:drawable/ic_menu_delete"
+        android:background="@android:color/transparent" />
+
+</RelativeLayout>

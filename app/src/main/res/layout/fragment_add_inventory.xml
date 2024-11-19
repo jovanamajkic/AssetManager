@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/layout_padding"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".ui.inventories.AddInventoryFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/barcode">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_barcode_inventory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <ImageButton
+            android:id="@+id/btn_search_barcode"
+            android:layout_width="@dimen/btn_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_find"
+            android:contentDescription="@string/search_barcode"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+        <ImageButton
+            android:id="@+id/btn_scan_inventory"
+            android:layout_width="@dimen/btn_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_qr_scan"
+            android:contentDescription="@string/scan_barcode"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/curr_emp_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/curr_employee"
+        android:layout_marginTop="32dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_curr_emp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:text="@string/add_new_employee"
+            style="@style/TextAppearance.AppCompat.Subhead"/>
+
+        <ToggleButton
+            android:id="@+id/toggleButton_employee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/employee"
+        android:layout_marginTop="16dp">
+        <Spinner
+            android:id="@+id/spinner_new_employee"
+            android:layout_width="match_parent"
+            android:enabled="false"
+            style="@android:style/Widget.Material.DropDownItem.Spinner"
+            android:layout_height="@dimen/spinner_height"
+            android:spinnerMode="dropdown"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/curr_loc_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/curr_location"
+        android:layout_marginTop="32dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_curr_loc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:text="@string/add_new_location"
+            style="@style/TextAppearance.AppCompat.Subhead"/>
+
+        <ToggleButton
+            android:id="@+id/toggleButton_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/location"
+        android:layout_marginTop="16dp">
+        <Spinner
+            android:id="@+id/spinner_new_location"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spinner_height"
+            android:enabled="false"
+            style="@android:style/Widget.Material.DropDownItem.Spinner"
+            android:spinnerMode="dropdown"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save_inventory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/inventory_add"
+        android:layout_marginTop="32dp" />
+</LinearLayout>

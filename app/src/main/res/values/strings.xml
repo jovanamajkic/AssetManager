@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">AssetsManager</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Assets Manager</string>
+    <string name="nav_header_subtitle">assets.manager@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Podešavanja</string>
+
+    <string name="menu_assets">Osnovna sredstva</string>
+    <string name="menu_employees">Zaposleni</string>
+    <string name="menu_locations">Lokacije</string>
+    <string name="menu_inventories">Popisne liste</string>
+    <string name="asset_image">Fotografija osnovnog sredstva</string>
+    <string name="search_name_hint">Pretraži po nazivu</string>
+    <string name="search_barcode_hint">Pretraži po barkodu</string>
+    <string name="add_asset">Dodaj osnovno sredstvo</string>
+    <string name="add_employee">Dodaj zaposlenog</string>
+    <string name="add_location">Dodaj lokaciju</string>
+    <string name="add_inventory">Dodaj popisnu listu</string>
+    <string name="delete_asset">Obriši osnovno sredstvo</string>
+    <string name="asset_details">Detalji osnovnog sredstva</string>
+    <string name="delete">Obriši</string>
+    <string name="edit">Izmijeni</string>
+    <string name="search_employee_name">Pretraži po imenu</string>
+    <string name="search_employee_email">Pretraži po email-u</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="employee_name">Ime i prezime zaposlenog</string>
+    <string name="employee_email">Email zaposlenog</string>
+    <string name="employee_add">Dodaj zaposlenog</string>
+    <string name="employee_edit">Ažuriraj zaposlenog</string>
+    <string name="delete_alert_title">Potvrda brisanja</string>
+    <string name="delete_alert_question">Da li ste sigurni da želite da izbrišete ovaj element?</string>
+    <string name="yes">Da</string>
+    <string name="No">Ne</string>
+
+    <string name="google_maps_key">AIzaSyAxfdByKq9PkpxG7fbvjVwflML9mxbN5_o</string>
+    <string name="city">Grad</string>
+    <string name="latitude">Geografska širina</string>
+    <string name="longitude">Geografska dužina</string>
+    <string name="search_city_hint">Pretraži po nazivu grada</string>
+    <string name="search_lat_long_hint">Pretraži po geografskoj širini ili dužini</string>
+    <string name="location_edit">Ažuriraj lokaciju</string>
+
+    <string name="name">Naziv</string>
+    <string name="description">Opis</string>
+    <string name="barcode">Barkod</string>
+    <string name="price">Cijena</string>
+    <string name="creation_date">Datum kreiranja</string>
+    <string name="employee">Zadužena osoba</string>
+    <string name="location">Zadužena lokacija</string>
+    <string name="image">Slika</string>
+    <string name="choose_image">Izaberi sliku</string>
+    <string name="scan_barcode">Skeniraj barkod</string>
+    <string name="asset_edit">Ažuriraj osnovno sredstvo</string>
+
+    <string name="curr_employee">Trenutno zadužena osoba</string>
+    <string name="new_employee">Nova zadužena osoba</string>
+    <string name="curr_location">Trenutno zadužena lokacija</string>
+    <string name="new_location">Nova zadužena lokacija</string>
+    <string name="inventory_add">Dodaj inventar</string>
+    <string name="add_new_employee">Zaduži novog zaposlenog?</string>
+    <string name="add_new_location">Zaduži novu lokaciju?</string>
+    <string name="search_barcode">Pretraži barkod</string>
+    <string name="inventory_edit">Ažuriraj inventar</string>
+    <string name="search_inventory_asset">Pretraži po nazivu OS</string>
+    <string name="search_inventory_loc">Pretraži po trenutnoj lokaciji</string>
+</resources>

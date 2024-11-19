@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_assets">
+
+    <fragment
+        android:id="@+id/nav_assets"
+        android:name="com.example.assetsmanager.ui.assets.AssetsFragment"
+        android:label="@string/menu_assets"
+        tools:layout="@layout/fragment_assets" >
+        <action
+            android:id="@+id/action_nav_assets_to_addAssetFragment"
+            app:destination="@id/addAssetFragment" />
+        <action
+            android:id="@+id/action_nav_assets_to_assetDetailsFragment"
+            app:destination="@id/assetDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/assetDetailsFragment"
+        android:name="com.example.assetsmanager.ui.assets.AssetDetailsFragment"
+        android:label="@string/asset_details"
+        tools:layout="@layout/fragment_asset_details">
+        <action
+            android:id="@+id/action_assetDetailsFragment_to_nav_assets"
+            app:destination="@id/nav_assets" />
+        <argument
+            android:name="asset"
+            app:argType="com.example.assetsmanager.db.model.Asset"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/addAssetFragment"
+        android:name="com.example.assetsmanager.ui.assets.AddAssetFragment"
+        android:label="@string/add_asset"
+        tools:layout="@layout/fragment_add_asset" >
+        <action
+            android:id="@+id/action_addAssetFragment_to_nav_assets"
+            app:destination="@id/nav_assets" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_employees"
+        android:name="com.example.assetsmanager.ui.employees.EmployeesFragment"
+        android:label="@string/menu_employees"
+        tools:layout="@layout/fragment_employees" >
+        <action
+            android:id="@+id/action_nav_employees_to_addEmployeeFragment"
+            app:destination="@id/addEmployeeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_locations"
+        android:name="com.example.assetsmanager.ui.locations.LocationsFragment"
+        android:label="@string/menu_locations"
+        tools:layout="@layout/fragment_locations" >
+        <action
+            android:id="@+id/action_nav_locations_to_addLocationFragment"
+            app:destination="@id/addLocationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_inventories"
+        android:name="com.example.assetsmanager.ui.inventories.InventoriesFragment"
+        android:label="@string/menu_inventories"
+        tools:layout="@layout/fragment_inventories" >
+        <action
+            android:id="@+id/action_nav_inventories_to_addInventoryFragment"
+            app:destination="@id/addInventoryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addEmployeeFragment"
+        android:name="com.example.assetsmanager.ui.employees.AddEmployeeFragment"
+        android:label="@string/add_employee"
+        tools:layout="@layout/fragment_add_employee" >
+        <action
+            android:id="@+id/action_addEmployeeFragment_to_nav_employees"
+            app:destination="@id/nav_employees" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addLocationFragment"
+        android:name="com.example.assetsmanager.ui.locations.AddLocationFragment"
+        android:label="@string/add_location"
+        tools:layout="@layout/fragment_add_location" >
+        <action
+            android:id="@+id/action_addLocationFragment_to_nav_locations"
+            app:destination="@id/nav_locations" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addInventoryFragment"
+        android:name="com.example.assetsmanager.ui.inventories.AddInventoryFragment"
+        android:label="@string/add_inventory"
+        tools:layout="@layout/fragment_add_inventory" >
+        <action
+            android:id="@+id/action_addInventoryFragment_to_nav_inventories"
+            app:destination="@id/nav_inventories" />
+    </fragment>
+
+</navigation>
