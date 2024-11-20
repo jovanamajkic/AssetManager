@@ -36,7 +36,6 @@
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Dugme za potvrdu unosa -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_save_employee"
         android:layout_width="wrap_content"

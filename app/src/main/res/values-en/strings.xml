@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">AssetsManager</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Assets Manager</string>
+    <string name="nav_header_subtitle">assets.manager@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_assets">Fixed assets</string>
+    <string name="menu_employees">Employees</string>
+    <string name="menu_locations">Locations</string>
+    <string name="menu_inventories">Inventory lists</string>
+    <string name="asset_image">Asset image</string>
+    <string name="search_name_hint">Search by name</string>
+    <string name="search_barcode_hint">Search by barcode</string>
+    <string name="add_asset">Add fixed asset</string>
+    <string name="add_employee">Add employee</string>
+    <string name="add_location">Add location</string>
+    <string name="add_inventory">Add inventory</string>
+    <string name="delete_asset">Delete fixed asset</string>
+    <string name="asset_details">Asset details</string>
+    <string name="delete">Delite</string>
+    <string name="edit">Edit</string>
+    <string name="search_employee_name">Search by name</string>
+    <string name="search_employee_email">Search by email</string>
+
+    <string name="employee_name">First and last name</string>
+    <string name="employee_email">Email</string>
+    <string name="employee_add">Add employee</string>
+    <string name="employee_edit">Update employee</string>
+    <string name="delete_alert_title">Delete confirmation</string>
+    <string name="delete_alert_question">Are you sure you want to delete this item?</string>
+    <string name="yes">Yes</string>
+    <string name="No">No</string>
+
+    <string name="google_maps_key">AIzaSyAxfdByKq9PkpxG7fbvjVwflML9mxbN5_o</string>
+    <string name="city">City</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="search_city_hint">Search by city name</string>
+    <string name="search_lat_long_hint">Search by latitude or longitude</string>
+    <string name="location_edit">Update location</string>
+
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="barcode">Barcode</string>
+    <string name="price">Price</string>
+    <string name="creation_date">Creation date</string>
+    <string name="employee">Assigned person</string>
+    <string name="location">Assigned location</string>
+    <string name="image">Image</string>
+    <string name="choose_image">Pick image</string>
+    <string name="scan_barcode">Scan barcode</string>
+    <string name="asset_edit">Update asset</string>
+
+    <string name="curr_employee">Current assigned person</string>
+    <string name="new_employee">New assigned person</string>
+    <string name="curr_location">Current assigned location</string>
+    <string name="new_location">New assigned location</string>
+    <string name="inventory_add">Add inventory</string>
+    <string name="add_new_employee">Assign new person?</string>
+    <string name="add_new_location">Assign new location?</string>
+    <string name="search_barcode">Search barcode</string>
+    <string name="inventory_edit">Update inventory</string>
+    <string name="search_inventory_asset">Search by asset name</string>
+    <string name="search_inventory_loc">Search by current location</string>
+
+    <string name="choose_language">Pick language</string>
+    <string name="save">Save</string>
+    <string name="serbian">Serbian</string>
+    <string name="english">English</string>
+</resources>

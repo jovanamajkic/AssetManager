@@ -101,4 +101,10 @@
             app:destination="@id/nav_inventories" />
     </fragment>
 
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.assetsmanager.ui.settings.SettingsFragment"
+        android:label="@string/action_settings"
+        tools:layout="@layout/fragment_settings" />
+
 </navigation>

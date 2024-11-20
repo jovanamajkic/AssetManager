@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">AssetsManager</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Otvorite fioku za navigaciju</string>
+    <string name="navigation_drawer_close">Zatvorite fioku za navigaciju</string>
     <string name="nav_header_title">Assets Manager</string>
     <string name="nav_header_subtitle">assets.manager@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_desc">Zaglavlje navigacije</string>
     <string name="action_settings">Podešavanja</string>
 
     <string name="menu_assets">Osnovna sredstva</string>
@@ -24,8 +24,7 @@
     <string name="edit">Izmijeni</string>
     <string name="search_employee_name">Pretraži po imenu</string>
     <string name="search_employee_email">Pretraži po email-u</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="employee_name">Ime i prezime zaposlenog</string>
     <string name="employee_email">Email zaposlenog</string>
     <string name="employee_add">Dodaj zaposlenog</string>
@@ -66,4 +65,9 @@
     <string name="inventory_edit">Ažuriraj inventar</string>
     <string name="search_inventory_asset">Pretraži po nazivu OS</string>
     <string name="search_inventory_loc">Pretraži po trenutnoj lokaciji</string>
+
+    <string name="choose_language">Izaberite jezik</string>
+    <string name="save">Sačuvaj</string>
+    <string name="serbian">Srpski</string>
+    <string name="english">Engleski</string>
 </resources>
