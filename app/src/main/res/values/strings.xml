@@ -10,7 +10,7 @@
     <string name="menu_assets">Osnovna sredstva</string>
     <string name="menu_employees">Zaposleni</string>
     <string name="menu_locations">Lokacije</string>
-    <string name="menu_inventories">Popisne liste</string>
+    <string name="menu_inventories">Popisna lista</string>
     <string name="asset_image">Fotografija osnovnog sredstva</string>
     <string name="search_name_hint">Pretraži po nazivu</string>
     <string name="search_barcode_hint">Pretraži po barkodu</string>

@@ -12,7 +12,7 @@
         android:layout_alignWithParentIfMissing="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="@dimen/item_padding"
         android:layout_above="@id/tv_locations"
         android:layout_toStartOf="@id/btn_edit_inventory"
         android:gravity="center_vertical"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_above="@id/tv_employees"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="@dimen/item_padding"
         android:layout_toStartOf="@id/btn_edit_inventory"
         android:textSize="@dimen/description_text_size" />
 
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="@dimen/item_padding"
         android:layout_toStartOf="@id/btn_edit_inventory"
         android:textSize="@dimen/description_text_size" />
 

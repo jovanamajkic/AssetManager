@@ -58,14 +58,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/field_margin"
             android:text="@string/add_new_employee"
             style="@style/TextAppearance.AppCompat.Subhead"/>
 
@@ -80,7 +80,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/employee"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="@dimen/activity_vertical_margin">
         <Spinner
             android:id="@+id/spinner_new_employee"
             android:layout_width="match_parent"
@@ -95,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/curr_location"
-        android:layout_marginTop="32dp">
+        android:layout_marginTop="@dimen/margin_large">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_curr_loc"
             android:layout_width="match_parent"
@@ -106,14 +106,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/field_margin"
             android:text="@string/add_new_location"
             style="@style/TextAppearance.AppCompat.Subhead"/>
 
@@ -128,7 +128,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/location"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="@dimen/field_margin">
         <Spinner
             android:id="@+id/spinner_new_location"
             android:layout_width="match_parent"
@@ -143,5 +143,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/inventory_add"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="@dimen/margin_large" />
 </LinearLayout>

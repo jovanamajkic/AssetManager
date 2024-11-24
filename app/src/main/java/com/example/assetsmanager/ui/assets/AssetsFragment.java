@@ -1,10 +1,12 @@
 package com.example.assetsmanager.ui.assets;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,7 @@ public class AssetsFragment extends Fragment implements AssetsAdapter.OnAssetsIt
     private SearchView searchViewName;
     private SearchView searchViewBarcode;
     private RecyclerView recyclerView;
+    private ProgressBar progressBar;
     private AssetsManagerDatabase assetsManagerDatabase;
     private List<Asset> assets;
     private List<Asset> allAssets;
@@ -54,6 +57,7 @@ public class AssetsFragment extends Fragment implements AssetsAdapter.OnAssetsIt
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = binding.recyclerAssets;
+        progressBar = binding.progressBar;
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         assets = new ArrayList<>();
         allAssets = new ArrayList<>();
@@ -172,5 +176,13 @@ public class AssetsFragment extends Fragment implements AssetsAdapter.OnAssetsIt
 
     public List<Asset> getAllAssets() {
         return allAssets;
+    }
+
+    public ProgressBar getProgressBar() {
+        return progressBar;
+    }
+
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
     }
 }

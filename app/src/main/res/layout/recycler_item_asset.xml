@@ -10,9 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginEnd="@dimen/item_padding"
         android:contentDescription="@string/asset_image"
         android:src="@drawable/ic_menu_asset"/>
 

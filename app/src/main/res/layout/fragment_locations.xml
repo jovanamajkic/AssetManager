@@ -10,19 +10,18 @@
         android:id="@+id/search_view_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:queryHint="@string/search_city_hint"
         android:iconifiedByDefault="false"
+        style="@style/SearchViewStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_vertical" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <SearchView
         android:id="@+id/search_view_latlong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        style="@style/SearchViewStyle"
         android:queryHint="@string/search_lat_long_hint"
         android:iconifiedByDefault="false"
         android:inputType="numberDecimal"
@@ -34,6 +33,7 @@
         android:id="@+id/recycler_locations"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        style="@style/RecyclerListStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -14,4 +14,15 @@
         <!-- Customize your theme here. -->
         <item name="colorOnSurfaceVariant">@color/dark_grey</item>
     </style>
+
+    <style name="SearchViewStyle">
+        <item name="android:layout_marginBottom">@dimen/field_margin</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="iconifiedByDefault">false</item>
+    </style>
+
+    <style name="RecyclerListStyle">
+        <item name="android:padding">@dimen/item_padding</item>
+        <item name="android:layout_marginTop">@dimen/field_margin</item>
+    </style>
 </resources>
