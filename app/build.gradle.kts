@@ -54,4 +54,5 @@ dependencies {
     annotationProcessor(libs.room.compiler)
 
     implementation(libs.scanner)
+    implementation(libs.picasso)
 }

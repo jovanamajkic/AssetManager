@@ -29,9 +29,6 @@ import java.util.stream.Collectors;
 public class EmployeesFragment extends Fragment implements EmployeesAdapter.OnEmployeesItemClick {
 
     private FragmentEmployeesBinding binding;
-    private SearchView searchViewName;
-    private SearchView searchViewEmail;
-    private RecyclerView recyclerView;
     private AssetsManagerDatabase assetsManagerDatabase;
     private List<Employee> employees;
     private List<Employee> allEmployees;
@@ -51,14 +48,14 @@ public class EmployeesFragment extends Fragment implements EmployeesAdapter.OnEm
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = binding.recyclerEmployees;
+        RecyclerView recyclerView = binding.recyclerEmployees;
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         employees = new ArrayList<>();
         allEmployees = new ArrayList<>();
         employeesAdapter = new EmployeesAdapter(employees, requireContext(), this);
         recyclerView.setAdapter(employeesAdapter);
 
-        searchViewName = binding.searchViewName;
+        SearchView searchViewName = binding.searchViewName;
         searchViewName.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -73,7 +70,7 @@ public class EmployeesFragment extends Fragment implements EmployeesAdapter.OnEm
             }
         });
 
-        searchViewEmail = binding.searchViewEmail;
+        SearchView searchViewEmail = binding.searchViewEmail;
         searchViewEmail.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

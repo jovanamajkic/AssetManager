@@ -13,7 +13,6 @@ import com.example.assetsmanager.ui.employees.AddEmployeeFragment;
 import com.example.assetsmanager.ui.employees.EmployeesFragment;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeAsync {

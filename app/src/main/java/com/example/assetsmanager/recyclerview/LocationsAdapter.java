@@ -12,14 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assetsmanager.R;
-import com.example.assetsmanager.db.model.Employee;
 import com.example.assetsmanager.db.model.Location;
 
 import java.util.List;
 
 public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.ViewHolder> {
     private List<Location> locations;
-    private List<Location> allLocations;
     private Context context;
     private LayoutInflater layoutInflater;
     private OnLocationsItemClick onLocationsItemClick;
@@ -77,7 +75,6 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.View
 
     public LocationsAdapter(List<Location> locations, Context context, LocationsAdapter.OnLocationsItemClick onLocationsItemClick){
         this.locations = locations;
-        this.allLocations = locations;
         layoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.onLocationsItemClick = onLocationsItemClick;

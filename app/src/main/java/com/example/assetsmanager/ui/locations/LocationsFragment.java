@@ -5,26 +5,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assetsmanager.R;
-import com.example.assetsmanager.async.EmployeeAsync;
 import com.example.assetsmanager.async.LocationAsync;
 import com.example.assetsmanager.databinding.FragmentLocationsBinding;
 import com.example.assetsmanager.db.AssetsManagerDatabase;
 import com.example.assetsmanager.db.model.Location;
 import com.example.assetsmanager.recyclerview.LocationsAdapter;
-import com.example.assetsmanager.ui.employees.EmployeesFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +29,6 @@ import java.util.stream.Collectors;
 public class LocationsFragment extends Fragment implements LocationsAdapter.OnLocationsItemClick {
 
     private FragmentLocationsBinding binding;
-    private SearchView searchViewCity;
-    private SearchView searchViewLatLong;
-    private RecyclerView recyclerView;
     private AssetsManagerDatabase assetsManagerDatabase;
     private LocationsAdapter adapter;
     private List<Location> locations;
@@ -55,14 +48,14 @@ public class LocationsFragment extends Fragment implements LocationsAdapter.OnLo
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = binding.recyclerLocations;
+        RecyclerView recyclerView = binding.recyclerLocations;
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         locations = new ArrayList<>();
         allLocations = new ArrayList<>();
         adapter = new LocationsAdapter(locations, requireContext(), this);
         recyclerView.setAdapter(adapter);
 
-        searchViewCity = binding.searchViewCity;
+        SearchView searchViewCity = binding.searchViewCity;
         searchViewCity.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -77,7 +70,7 @@ public class LocationsFragment extends Fragment implements LocationsAdapter.OnLo
             }
         });
 
-        searchViewLatLong = binding.searchViewLatlong;
+        SearchView searchViewLatLong = binding.searchViewLatlong;
         searchViewLatLong.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -98,16 +91,12 @@ public class LocationsFragment extends Fragment implements LocationsAdapter.OnLo
     private void filter(){
         if(cityQuery.isEmpty() && latLongQuery.isEmpty()){
             locations = new ArrayList<>(allLocations);
-        } else if(!cityQuery.isEmpty() && latLongQuery.isEmpty()) {
-            locations = allLocations.stream()
-                    .filter(l -> l.getCity().toLowerCase().contains(cityQuery))
-                    .collect(Collectors.toList());
         } else {
             locations = allLocations.stream()
                     .filter(l -> {
                         boolean cityMatch = l.getCity().toLowerCase().contains(cityQuery);
-                        boolean latLongMatch = l.getLatitude() == Double.parseDouble(latLongQuery)
-                                || l.getLongitude() == Double.parseDouble(latLongQuery);
+                        boolean latLongMatch = String.valueOf(l.getLatitude()).contains(latLongQuery)
+                                || String.valueOf(l.getLongitude()).contains(latLongQuery);
                         return cityMatch && latLongMatch;
                     })
                     .collect(Collectors.toList());

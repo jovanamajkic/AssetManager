@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assetsmanager.R;
-import com.example.assetsmanager.db.model.Inventory;
 
 import java.util.List;
 

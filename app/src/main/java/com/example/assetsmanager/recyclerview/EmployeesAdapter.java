@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 
 public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.ViewHolder> {
     private List<Employee> employees;
-    private List<Employee> allEmployees;
     private Context context;
     private LayoutInflater layoutInflater;
     private OnEmployeesItemClick onEmployeesItemClick;
@@ -77,7 +76,6 @@ public class EmployeesAdapter extends RecyclerView.Adapter<EmployeesAdapter.View
 
     public EmployeesAdapter(List<Employee> employees, Context context, OnEmployeesItemClick onEmployeesItemClick){
         this.employees = employees;
-        this.allEmployees = employees;
         layoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.onEmployeesItemClick = onEmployeesItemClick;

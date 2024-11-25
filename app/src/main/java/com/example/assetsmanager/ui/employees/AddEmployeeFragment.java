@@ -23,7 +23,6 @@ public class AddEmployeeFragment extends Fragment {
     private Employee employee;
     private TextInputEditText etName;
     private TextInputEditText etEmail;
-    private MaterialButton btnSaveEmployee;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,7 +31,7 @@ public class AddEmployeeFragment extends Fragment {
 
         etName = root.findViewById(R.id.et_employee_name);
         etEmail = root.findViewById(R.id.et_employee_email);
-        btnSaveEmployee = root.findViewById(R.id.btn_save_employee);
+        MaterialButton btnSaveEmployee = root.findViewById(R.id.btn_save_employee);
 
         assetsManagerDatabase = AssetsManagerDatabase.getInstance(requireContext());
 
@@ -56,13 +55,13 @@ public class AddEmployeeFragment extends Fragment {
                 String email = etEmail.getText().toString().trim();
 
                 if (name.isEmpty()) {
-                    ((TextInputLayout) root.findViewById(R.id.name_input_layout)).setError("Unesite ime");
+                    ((TextInputLayout) root.findViewById(R.id.name_input_layout)).setError(getString(R.string.enter_name));
                 } else {
                     ((TextInputLayout) root.findViewById(R.id.name_input_layout)).setError(null);
                 }
 
                 if (email.isEmpty()) {
-                    ((TextInputLayout) root.findViewById(R.id.email_input_layout)).setError("Unesite email");
+                    ((TextInputLayout) root.findViewById(R.id.email_input_layout)).setError(getString(R.string.enter_email));
                 } else {
                     ((TextInputLayout) root.findViewById(R.id.email_input_layout)).setError(null);
                 }
@@ -72,10 +71,10 @@ public class AddEmployeeFragment extends Fragment {
                     employee.setEmail(email);
                     if (getArguments() != null && getArguments().containsKey("employee")) {
                         new EmployeeAsync.UpdateTask(AddEmployeeFragment.this, employee).execute();
-                        Toast.makeText(requireContext(), "Zaposleni je uspješno ažuriran", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.emp_edit_msg, Toast.LENGTH_SHORT).show();
                     } else {
                         new EmployeeAsync.InsertTask(AddEmployeeFragment.this, employee).execute();
-                        Toast.makeText(requireContext(), "Zaposleni je uspješno dodat", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.emp_add_msg, Toast.LENGTH_SHORT).show();
                     }
                 }
             }

@@ -3,25 +3,20 @@ package com.example.assetsmanager.async;
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 
-import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.assetsmanager.R;
-import com.example.assetsmanager.db.model.Employee;
 import com.example.assetsmanager.db.model.Location;
 import com.example.assetsmanager.ui.assets.AssetDetailsFragment;
 import com.example.assetsmanager.ui.locations.AddLocationFragment;
 import com.example.assetsmanager.ui.locations.LocationsFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.lang.ref.WeakReference;
-import java.util.Collections;
 import java.util.List;
 
 public class LocationAsync {

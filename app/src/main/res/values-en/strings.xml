@@ -70,4 +70,29 @@
     <string name="save">Save</string>
     <string name="serbian">Serbian</string>
     <string name="english">English</string>
+
+    <string name="img_error">Error saving the image</string>
+    <string name="img_error_2">Error uploading the image</string>
+    <string name="asset_error">Enter all asset elements</string>
+    <string name="asset_edit_msg">Asset successfully updated</string>
+    <string name="asset_add_msg">Asset successfully added</string>
+    <string name="camera_perm">Camera permission is required</string>
+    <string name="gallery_perm">Gallery permission is required to upload an image</string>
+    <string name="pick_option">Select an option</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="qr_scanner">QR Code Scanner</string>
+    <string name="close">Close</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_email">Enter email</string>
+    <string name="emp_edit_msg">Employee successfully updated</string>
+    <string name="emp_add_msg">Employee successfully added</string>
+    <string name="inventory_error">Enter all inventory elements</string>
+    <string name="inventory_edit_msg">Inventory successfully updated</string>
+    <string name="inventory_add_msg">Inventory successfully added</string>
+    <string name="enter_lat">Enter latitude</string>
+    <string name="enter_long">Enter longitude</string>
+    <string name="location_edit_msg">Location successfully updated</string>
+    <string name="location_add_msg">Location successfully added</string>
+    <string name="marked_location">Marked location</string>
 </resources>

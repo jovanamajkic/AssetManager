@@ -19,9 +19,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,11 +35,13 @@ import com.example.assetsmanager.db.AssetsManagerDatabase;
 import com.example.assetsmanager.db.model.Asset;
 import com.example.assetsmanager.db.model.Employee;
 import com.example.assetsmanager.db.model.Location;
+import com.example.assetsmanager.util.Constants;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.journeyapps.barcodescanner.CaptureActivity;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -60,10 +60,6 @@ public class AddAssetFragment extends Fragment {
     private TextInputEditText etName, etDescription, etBarcode, etPrice, etDate;
     private Spinner spinnerEmployee, spinnerLocation;
     private ImageView image;
-    private MaterialButton btnSave;
-    private ImageButton btnScan;
-    private static final int PICK_IMAGE_REQUEST = 1;
-    private static final int CAMERA_REQUEST_CODE = 2;
     private Uri selectedImageUri;
     private File photoFile;
     private String imagePath;
@@ -88,8 +84,8 @@ public class AddAssetFragment extends Fragment {
         etDate = root.findViewById(R.id.et_date);
         spinnerEmployee = root.findViewById(R.id.spinner_employee);
         spinnerLocation = root.findViewById(R.id.spinner_location);
-        btnSave = root.findViewById(R.id.btn_save_asset);
-        btnScan = root.findViewById(R.id.btn_scan_barcode);
+        MaterialButton btnSave = root.findViewById(R.id.btn_save_asset);
+        ImageButton btnScan = root.findViewById(R.id.btn_scan_barcode);
         image = root.findViewById(R.id.image_asset);
 
         assetsManagerDatabase = AssetsManagerDatabase.getInstance(requireContext());
@@ -137,7 +133,7 @@ public class AddAssetFragment extends Fragment {
             etDate.setText(format.format(asset.getCreationDate()));
             etPrice.setText(String.valueOf(asset.getPrice()));
             bitmap = BitmapFactory.decodeFile(asset.getImage());
-            image.setImageBitmap(bitmap);
+            loadImage(asset.getImage(), false);
             btnSave.setText(R.string.asset_edit);
             ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
             if (actionBar != null) {
@@ -155,7 +151,7 @@ public class AddAssetFragment extends Fragment {
                         imagePath = saveImageToInternalStorage();
                         asset.setImage(imagePath);
                         if (imagePath == null)
-                            Toast.makeText(requireContext(), "Greška pri čuvanju slike", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireContext(), R.string.img_error, Toast.LENGTH_SHORT).show();
                     }
                     String name = etName.getText().toString();
                     String description = etDescription.getText().toString();
@@ -167,7 +163,7 @@ public class AddAssetFragment extends Fragment {
 
                     if (name.isEmpty() || description.isEmpty() || barcode.isEmpty() || price.isEmpty()
                         || dateString.isEmpty() || employeeId == 0 || locationId == 0 || (imageChanged && imagePath == null)) {
-                        Toast.makeText(requireContext(), "Unesite sve elemente osnovnog sredstva", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.asset_error, Toast.LENGTH_SHORT).show();
                         return;
                     }
 
@@ -188,12 +184,12 @@ public class AddAssetFragment extends Fragment {
 
                     if (getArguments() != null && getArguments().containsKey("asset")) {
                         new AssetAsync.UpdateTask(AddAssetFragment.this, asset).execute();
-                        Toast.makeText(requireContext(), "Osnovno sredstvo uspješno ažurirano", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.asset_edit_msg, Toast.LENGTH_SHORT).show();
                     } else {
                         imagePath = saveImageToInternalStorage();
                         asset.setImage(imagePath);
                         new AssetAsync.InsertTask(AddAssetFragment.this, asset).execute();
-                        Toast.makeText(requireContext(), "Osnovno sredstvo uspješno sačuvano", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.asset_add_msg, Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -216,7 +212,7 @@ public class AddAssetFragment extends Fragment {
                     else
                         openCamera();
                 } else {
-                    Toast.makeText(getContext(), "Dozvola za kameru je potrebna.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.camera_perm, Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -225,7 +221,7 @@ public class AddAssetFragment extends Fragment {
                 if (isGranted) {
                     openGallery();
                 } else {
-                    Toast.makeText(getContext(), "Dozvola za galeriju je potrebna za učitavanje slike.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.gallery_perm, Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -245,8 +241,8 @@ public class AddAssetFragment extends Fragment {
 
     private void showImagePickerDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("Izaberite opciju")
-                .setItems(new String[]{"Galerija", "Kamera"}, (dialog, which) -> {
+        builder.setTitle(R.string.pick_option)
+                .setItems(new String[]{getString(R.string.gallery), getString(R.string.camera)}, (dialog, which) -> {
                     if (which == 0) {
                         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_MEDIA_IMAGES)
                                 == PackageManager.PERMISSION_GRANTED) {
@@ -268,7 +264,7 @@ public class AddAssetFragment extends Fragment {
 
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        startActivityForResult(intent, Constants.PICK_IMAGE_REQUEST);
     }
 
     private void openCamera() {
@@ -279,16 +275,15 @@ public class AddAssetFragment extends Fragment {
             selectedImageUri = FileProvider.getUriForFile(requireContext(),
                     "com.example.assetsmanager.fileprovider", photoFile);
 
-            Log.d("Slika", "Uri: " + selectedImageUri);
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, selectedImageUri);
-            startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE);
+            startActivityForResult(cameraIntent, Constants.CAMERA_REQUEST_CODE);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     private File createImageFile() throws IOException {
-        File storageDir = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File storageDir = requireContext().getFilesDir();
         return File.createTempFile("asset_image_" + System.currentTimeMillis(), ".jpg", storageDir);
     }
 
@@ -304,19 +299,18 @@ public class AddAssetFragment extends Fragment {
 
         bitmap = null;
         if (resultCode == requireActivity().RESULT_OK) {
-            if (requestCode == PICK_IMAGE_REQUEST && data != null && data.getData() != null) {
+            if (requestCode == Constants.PICK_IMAGE_REQUEST && data != null && data.getData() != null) {
                 selectedImageUri = data.getData();
                 try {
                     bitmap = MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(), selectedImageUri);
-                    image.setImageBitmap(bitmap);
                 } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(requireContext(), "Greška pri učitavanju slike", Toast.LENGTH_SHORT).show();
+                    throw new RuntimeException(e);
                 }
-            } else if (requestCode == CAMERA_REQUEST_CODE) {
+                loadImage(null, true);
+            } else if (requestCode == Constants.CAMERA_REQUEST_CODE) {
                 if (photoFile != null && photoFile.exists()) {
                     bitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
-                    image.setImageBitmap(bitmap);
+                    loadImage(photoFile.getAbsolutePath(), false);
                 }
             }
         }
@@ -324,7 +318,7 @@ public class AddAssetFragment extends Fragment {
 
     private void startScan() {
         ScanOptions options = new ScanOptions();
-        options.setPrompt("Skener QR Koda");
+        options.setPrompt(getString(R.string.qr_scanner));
         options.setBeepEnabled(true);
         options.setOrientationLocked(false);
         options.setCaptureActivity(CaptureActivity.class);
@@ -353,6 +347,21 @@ public class AddAssetFragment extends Fragment {
             return null;
         }
         return imagePath.getAbsolutePath();
+    }
+
+    private void loadImage(String imagePath, boolean isUri){
+        Uri uri;
+        if(isUri){
+            uri = selectedImageUri;
+        } else {
+            File file = new File(imagePath);
+            uri = FileProvider.getUriForFile(requireContext(), requireContext().getPackageName() + ".fileprovider", file);
+        }
+        Picasso.get()
+                .load(uri)
+                .placeholder(R.drawable.ic_menu_gallery)
+                .error(R.drawable.ic_error)
+                .into(image);
     }
 
 

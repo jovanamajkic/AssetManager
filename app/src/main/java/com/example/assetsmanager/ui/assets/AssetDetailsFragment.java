@@ -1,14 +1,13 @@
 package com.example.assetsmanager.ui.assets;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,15 +23,13 @@ import com.example.assetsmanager.db.AssetsManagerDatabase;
 import com.example.assetsmanager.db.model.Asset;
 import com.example.assetsmanager.db.model.Employee;
 import com.example.assetsmanager.db.model.Location;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,8 +83,13 @@ public class AssetDetailsFragment extends Fragment implements OnMapReadyCallback
             tvPrice.setText(String.valueOf(asset.getPrice()));
             tvDate.setText(format.format(asset.getCreationDate()));
             tvLocation.setText(String.valueOf(asset.getLocationId()));
-            Bitmap bitmap = BitmapFactory.decodeFile(asset.getImage());
-            ivImage.setImageBitmap(bitmap);
+            File file = new File(asset.getImage());
+            Uri uri = FileProvider.getUriForFile(requireContext(), requireContext().getPackageName() + ".fileprovider", file);
+            Picasso.get()
+                    .load(uri)
+                    .placeholder(R.drawable.ic_menu_gallery)
+                    .error(R.drawable.ic_error)
+                    .into(ivImage);
         }
 
         return root;
@@ -109,7 +111,7 @@ public class AssetDetailsFragment extends Fragment implements OnMapReadyCallback
 
                 builder.setAdapter(adapter, null);
 
-                builder.setNegativeButton("Zatvori", (dialog, which) -> dialog.dismiss());
+                builder.setNegativeButton(R.string.close, (dialog, which) -> dialog.dismiss());
                 builder.show();
                 return false;
             }

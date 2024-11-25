@@ -24,5 +24,13 @@
     <style name="RecyclerListStyle">
         <item name="android:padding">@dimen/item_padding</item>
         <item name="android:layout_marginTop">@dimen/field_margin</item>
+        <item name="android:layout_marginBottom">@dimen/recycler_margin</item>
     </style>
+
+    <style name="RecyclerItemStyle" parent="CardView">
+        <item name="cardCornerRadius">@dimen/card_view</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardElevation">@dimen/card_view</item>
+    </style>
+
 </resources>

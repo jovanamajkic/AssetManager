@@ -16,12 +16,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.assetsmanager.R;
-import com.example.assetsmanager.async.EmployeeAsync;
 import com.example.assetsmanager.async.LocationAsync;
 import com.example.assetsmanager.db.AssetsManagerDatabase;
-import com.example.assetsmanager.db.model.Employee;
 import com.example.assetsmanager.db.model.Location;
-import com.example.assetsmanager.ui.employees.AddEmployeeFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -44,7 +41,6 @@ public class AddLocationFragment extends Fragment implements OnMapReadyCallback 
     private TextInputEditText etCity;
     private TextInputEditText etLatitude;
     private TextInputEditText etLongitude;
-    private MaterialButton btnSave;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,7 +51,7 @@ public class AddLocationFragment extends Fragment implements OnMapReadyCallback 
         etCity = root.findViewById(R.id.et_city_name);
         etLatitude = root.findViewById(R.id.et_latitude);
         etLongitude = root.findViewById(R.id.et_longitude);
-        btnSave = root.findViewById(R.id.btn_save_location);
+        MaterialButton btnSave = root.findViewById(R.id.btn_save_location);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -100,19 +96,19 @@ public class AddLocationFragment extends Fragment implements OnMapReadyCallback 
                 String longitude = etLongitude.getText().toString();
 
                 if (city.isEmpty()) {
-                    ((TextInputLayout) root.findViewById(R.id.city_input_layout)).setError("Unesite ime");
+                    ((TextInputLayout) root.findViewById(R.id.city_input_layout)).setError(getString(R.string.enter_name));
                 } else {
                     ((TextInputLayout) root.findViewById(R.id.city_input_layout)).setError(null);
                 }
 
                 if (latitude.isEmpty()) {
-                    ((TextInputLayout) root.findViewById(R.id.lat_input_layout)).setError("Unesite geografsku širinu");
+                    ((TextInputLayout) root.findViewById(R.id.lat_input_layout)).setError(getString(R.string.enter_lat));
                 } else {
                     ((TextInputLayout) root.findViewById(R.id.lat_input_layout)).setError(null);
                 }
 
                 if (longitude.isEmpty()) {
-                    ((TextInputLayout) root.findViewById(R.id.long_input_layout)).setError("Unesite geografsku dužinu");
+                    ((TextInputLayout) root.findViewById(R.id.long_input_layout)).setError(getString(R.string.enter_long));
                 } else {
                     ((TextInputLayout) root.findViewById(R.id.long_input_layout)).setError(null);
                 }
@@ -124,10 +120,10 @@ public class AddLocationFragment extends Fragment implements OnMapReadyCallback 
 
                     if (getArguments() != null && getArguments().containsKey("location")) {
                         new LocationAsync.UpdateTask(AddLocationFragment.this, location).execute();
-                        Toast.makeText(requireContext(), "Lokacija je uspješno ažurirana", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.location_edit_msg, Toast.LENGTH_SHORT).show();
                     } else {
                         new LocationAsync.InsertTask(AddLocationFragment.this, location).execute();
-                        Toast.makeText(requireContext(), "Lokacija je uspješno dodana", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.location_add_msg, Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -168,7 +164,7 @@ public class AddLocationFragment extends Fragment implements OnMapReadyCallback 
                 map.clear();
                 map.addMarker(new MarkerOptions()
                         .position(latLng)
-                        .title("Označena lokacija")
+                        .title(getString(R.string.marked_location))
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
                 );
             }

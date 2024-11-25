@@ -70,4 +70,29 @@
     <string name="save">Sačuvaj</string>
     <string name="serbian">Srpski</string>
     <string name="english">Engleski</string>
+
+    <string name="img_error">Greška pri čuvanju slike</string>
+    <string name="img_error_2">Greška pri učitavanju slike</string>
+    <string name="asset_error">Unesite sve elemente osnovnog sredstva</string>
+    <string name="asset_edit_msg">Osnovno sredstvo uspješno ažurirano</string>
+    <string name="asset_add_msg">Osnovno sredstvo uspješno sačuvano</string>
+    <string name="camera_perm">Dozvola za kameru je potrebna</string>
+    <string name="gallery_perm">Dozvola za galeriju je potrebna za učitavanje slike</string>
+    <string name="pick_option">Izaberite opciju</string>
+    <string name="gallery">Galerija</string>
+    <string name="camera">Kamera</string>
+    <string name="qr_scanner">Skener QR koda</string>
+    <string name="close">Zatvori</string>
+    <string name="enter_name">Unesite ime</string>
+    <string name="enter_email">Unesite email</string>
+    <string name="emp_edit_msg">Zaposleni uspješno ažuriran</string>
+    <string name="emp_add_msg">Zaposleni uspješno sačuvan</string>
+    <string name="inventory_error">Unesite sve elemente inventara</string>
+    <string name="inventory_edit_msg">Inventar uspješno ažuriran</string>
+    <string name="inventory_add_msg">Inventar uspješno sačuvan</string>
+    <string name="enter_lat">Unesite geografsku širinu</string>
+    <string name="enter_long">Unesite geografsku dužinu</string>
+    <string name="location_edit_msg">Lokacija uspješno ažurirana</string>
+    <string name="location_add_msg">Lokacija uspješno sačuvana</string>
+    <string name="marked_location">Označena lokacija</string>
 </resources>

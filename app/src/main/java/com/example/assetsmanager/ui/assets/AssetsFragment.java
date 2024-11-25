@@ -1,8 +1,6 @@
 package com.example.assetsmanager.ui.assets;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,15 +29,12 @@ import java.util.stream.Collectors;
 
 public class AssetsFragment extends Fragment implements AssetsAdapter.OnAssetsItemClick {
     private FragmentAssetsBinding binding;
-    private SearchView searchViewName;
-    private SearchView searchViewBarcode;
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private AssetsManagerDatabase assetsManagerDatabase;
     private List<Asset> assets;
     private List<Asset> allAssets;
     private AssetsAdapter assetsAdapter;
-    private int pos;
     private String nameQuery = "";
     private String barcodeQuery = "";
 
@@ -64,7 +59,7 @@ public class AssetsFragment extends Fragment implements AssetsAdapter.OnAssetsIt
         assetsAdapter = new AssetsAdapter(assets, requireContext(), this);
         recyclerView.setAdapter(assetsAdapter);
 
-        searchViewName = binding.searchViewName;
+        SearchView searchViewName = binding.searchViewName;
         searchViewName.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -79,7 +74,7 @@ public class AssetsFragment extends Fragment implements AssetsAdapter.OnAssetsIt
             }
         });
 
-        searchViewBarcode = binding.searchViewBarcode;
+        SearchView searchViewBarcode = binding.searchViewBarcode;
         searchViewBarcode.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -132,7 +127,6 @@ public class AssetsFragment extends Fragment implements AssetsAdapter.OnAssetsIt
     public void onAssetClick(int pos) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("asset", assets.get(pos));
-        Log.d("AssetDetails", "asset: " + (assets.get(pos) == null));
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
         navController.navigate(R.id.action_nav_assets_to_assetDetailsFragment, bundle);
     }

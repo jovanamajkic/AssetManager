@@ -5,11 +5,9 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ProgressBar;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assetsmanager.R;
 import com.example.assetsmanager.db.model.Asset;
@@ -31,7 +29,7 @@ public class AssetAsync {
         public RetrieveTask(AssetsFragment fragment) {
             this.weakReference = new WeakReference<>(fragment);
         }
-        
+
 
         @Override
         protected List<Asset> doInBackground(Void... voids) {

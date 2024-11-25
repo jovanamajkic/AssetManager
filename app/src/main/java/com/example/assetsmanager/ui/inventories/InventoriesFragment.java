@@ -1,7 +1,6 @@
 package com.example.assetsmanager.ui.inventories;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
@@ -19,16 +18,11 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 
 import com.example.assetsmanager.R;
-import com.example.assetsmanager.async.EmployeeAsync;
 import com.example.assetsmanager.async.InventoryAsync;
 import com.example.assetsmanager.databinding.FragmentInventoriesBinding;
 import com.example.assetsmanager.db.AssetsManagerDatabase;
-import com.example.assetsmanager.db.model.Employee;
-import com.example.assetsmanager.db.model.Inventory;
-import com.example.assetsmanager.recyclerview.EmployeesAdapter;
 import com.example.assetsmanager.recyclerview.InventoriesAdapter;
 import com.example.assetsmanager.recyclerview.InventoryItem;
-import com.example.assetsmanager.ui.employees.EmployeesFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +31,6 @@ import java.util.stream.Collectors;
 public class InventoriesFragment extends Fragment implements InventoriesAdapter.OnInventoryItemClick {
 
     public FragmentInventoriesBinding binding;
-    private SearchView searchViewAsset;
-    private SearchView searchViewLocation;
-    private RecyclerView recyclerView;
     private AssetsManagerDatabase assetsManagerDatabase;
     private List<InventoryItem> inventories;
     private List<InventoryItem> allInventories;
@@ -60,14 +51,14 @@ public class InventoriesFragment extends Fragment implements InventoriesAdapter.
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = binding.recyclerInventory;
+        RecyclerView recyclerView = binding.recyclerInventory;
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         inventories = new ArrayList<>();
         allInventories = new ArrayList<>();
         inventoriesAdapter = new InventoriesAdapter(inventories, requireContext(), this);
         recyclerView.setAdapter(inventoriesAdapter);
 
-        searchViewAsset = binding.searchViewBarcodeInv;
+        SearchView searchViewAsset = binding.searchViewBarcodeInv;
         searchViewAsset.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -82,7 +73,7 @@ public class InventoriesFragment extends Fragment implements InventoriesAdapter.
             }
         });
 
-        searchViewLocation = binding.searchViewLocation;
+        SearchView searchViewLocation = binding.searchViewLocation;
         searchViewLocation.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

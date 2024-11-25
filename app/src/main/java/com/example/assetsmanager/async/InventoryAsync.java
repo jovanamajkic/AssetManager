@@ -9,17 +9,14 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.assetsmanager.R;
-import com.example.assetsmanager.db.model.Asset;
 import com.example.assetsmanager.db.model.Employee;
 import com.example.assetsmanager.db.model.Inventory;
 import com.example.assetsmanager.db.model.Location;
 import com.example.assetsmanager.recyclerview.InventoryItem;
-import com.example.assetsmanager.ui.assets.AddAssetFragment;
 import com.example.assetsmanager.ui.inventories.AddInventoryFragment;
 import com.example.assetsmanager.ui.inventories.InventoriesFragment;
 
 import java.lang.ref.WeakReference;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 

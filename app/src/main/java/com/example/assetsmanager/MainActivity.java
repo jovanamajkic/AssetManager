@@ -1,11 +1,16 @@
 package com.example.assetsmanager;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.assetsmanager.util.Constants;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -18,6 +23,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.assetsmanager.databinding.ActivityMainBinding;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -101,5 +108,20 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences shPreferences = PreferenceManager.getDefaultSharedPreferences(newBase);
+        String lang = shPreferences.getString(Constants.SELECTED_LANGUAGE, Locale.getDefault().getLanguage());
+
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        newBase.getResources().updateConfiguration(config,
+                newBase.getResources().getDisplayMetrics());
+
+        super.attachBaseContext(newBase);
     }
 }

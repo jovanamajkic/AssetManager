@@ -2,8 +2,6 @@ package com.example.assetsmanager.ui.inventories;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
-import android.hardware.lights.LightsManager;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -31,7 +29,6 @@ import com.example.assetsmanager.db.model.Asset;
 import com.example.assetsmanager.db.model.Employee;
 import com.example.assetsmanager.db.model.Inventory;
 import com.example.assetsmanager.db.model.Location;
-import com.example.assetsmanager.recyclerview.InventoriesAdapter;
 import com.example.assetsmanager.recyclerview.InventoryItem;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -45,7 +42,6 @@ import java.util.List;
 
 public class AddInventoryFragment extends Fragment {
     private AssetsManagerDatabase assetsManagerDatabase;
-    private InventoriesAdapter inventoriesAdapter;
     private Inventory inventory;
     private Asset asset;
     private Employee currentEmployee;
@@ -55,8 +51,6 @@ public class AddInventoryFragment extends Fragment {
     private TextInputEditText etBarcode, etCurrEmployee, etCurrLocation;
     private Spinner spinnerLocation, spinnerEmployee;
     private ToggleButton toggleBtnLocation, toggleBtnEmployee;
-    private MaterialButton btnSaveInventory;
-    private ImageButton btnScan, btnFind;
     private ArrayAdapter<String> employeeAdapter;
     private ArrayAdapter<String> locationAdapter;
 
@@ -72,9 +66,9 @@ public class AddInventoryFragment extends Fragment {
         spinnerLocation = root.findViewById(R.id.spinner_new_location);
         toggleBtnEmployee = root.findViewById(R.id.toggleButton_employee);
         toggleBtnLocation = root.findViewById(R.id.toggleButton_location);
-        btnScan = root.findViewById(R.id.btn_scan_inventory);
-        btnFind = root.findViewById(R.id.btn_search_barcode);
-        btnSaveInventory = root.findViewById(R.id.btn_save_inventory);
+        ImageButton btnScan = root.findViewById(R.id.btn_scan_inventory);
+        ImageButton btnFind = root.findViewById(R.id.btn_search_barcode);
+        MaterialButton btnSaveInventory = root.findViewById(R.id.btn_save_inventory);
 
         assetsManagerDatabase = AssetsManagerDatabase.getInstance(requireContext());
 
@@ -169,7 +163,7 @@ public class AddInventoryFragment extends Fragment {
                     newLocationId = locations.get(spinnerLocation.getSelectedItemPosition()).getId();
 
                 if (barcode.isEmpty()) {
-                    Toast.makeText(requireContext(), "Unesite sve elemente inventara", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), R.string.inventory_error, Toast.LENGTH_SHORT).show();
                 } else {
                     inventory.setBarcode(Long.parseLong(barcode));
                     if(currentEmployee != null)
@@ -177,22 +171,28 @@ public class AddInventoryFragment extends Fragment {
                     if(currentLocation != null)
                         inventory.setCurrLocationId(currentLocation.getId());
 
-                    if(newEmployeeId != -1)
+                    if(newEmployeeId != -1) {
                         inventory.setNewEmployeeId(newEmployeeId);
-                    else
+                    } else if(currentEmployee != null) {
                         inventory.setNewEmployeeId(currentEmployee.getId());
+                    } else {
+                        inventory.setNewEmployeeId(inventory.getCurrEmployeeId());
+                    }
 
-                    if(newLocationId != -1)
+                    if(newLocationId != -1) {
                         inventory.setNewLocationId(newLocationId);
-                    else
+                    } else if (currentLocation != null) {
                         inventory.setNewLocationId(currentLocation.getId());
+                    } else {
+                        inventory.setNewLocationId(inventory.getCurrLocationId());
+                    }
 
                     if (getArguments() != null && getArguments().containsKey("inventory")) {
                         new InventoryAsync.UpdateTask(AddInventoryFragment.this, inventory).execute();
-                        Toast.makeText(requireContext(), "Inventar uspješno ažuriran", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.inventory_edit_msg, Toast.LENGTH_SHORT).show();
                     } else {
                         new InventoryAsync.InsertTask(AddInventoryFragment.this, inventory).execute();
-                        Toast.makeText(requireContext(), "Inventar uspješno sačuvan", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.inventory_add_msg, Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -208,7 +208,7 @@ public class AddInventoryFragment extends Fragment {
 
     private void startScan(){
         ScanOptions options = new ScanOptions();
-        options.setPrompt("Skener QR Koda");
+        options.setPrompt(getString(R.string.qr_scanner));
         options.setBeepEnabled(true);
         options.setOrientationLocked(false);
         options.setCaptureActivity(CaptureActivity.class);
@@ -230,7 +230,7 @@ public class AddInventoryFragment extends Fragment {
                 if (isGranted) {
                     startScan();
                 } else {
-                    Toast.makeText(getContext(), "Dozvola za kameru je potrebna.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.camera_perm, Toast.LENGTH_SHORT).show();
                 }
             });
 

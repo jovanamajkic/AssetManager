@@ -2,13 +2,10 @@ package com.example.assetsmanager.recyclerview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,7 +25,7 @@ public class AssetsAdapter extends RecyclerView.Adapter<AssetsAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = layoutInflater.inflate(R.layout.recycler_item_asset, parent, false);
+        View v = layoutInflater.inflate(R.layout.recycler_item, parent, false);
         return new ViewHolder(v);
     }
 
@@ -37,8 +34,6 @@ public class AssetsAdapter extends RecyclerView.Adapter<AssetsAdapter.ViewHolder
         final Asset asset = assets.get(position);
         holder.tvName.setText(asset.getName());
         holder.tvBarcode.setText(String.valueOf(asset.getBarcode()));
-        Bitmap bitmap = BitmapFactory.decodeFile(asset.getImage());
-        holder.ivAsset.setImageBitmap(bitmap);
     }
 
     @Override
@@ -47,7 +42,6 @@ public class AssetsAdapter extends RecyclerView.Adapter<AssetsAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public ImageView ivAsset;
         public TextView tvName;
         public TextView tvBarcode;
         private ImageButton btnDelete;
@@ -58,11 +52,10 @@ public class AssetsAdapter extends RecyclerView.Adapter<AssetsAdapter.ViewHolder
             super(itemView);
             itemView.setOnClickListener(this);
             layout = itemView;
-            tvName = itemView.findViewById(R.id.tv_asset_name);
-            tvBarcode = itemView.findViewById(R.id.tv_barcode);
-            ivAsset = itemView.findViewById(R.id.asset_image);
-            btnEdit = itemView.findViewById(R.id.btn_edit_asset);
-            btnDelete = itemView.findViewById(R.id.btn_delete_asset);
+            tvName = itemView.findViewById(R.id.tv_title);
+            tvBarcode = itemView.findViewById(R.id.tv_description);
+            btnEdit = itemView.findViewById(R.id.btn_edit);
+            btnDelete = itemView.findViewById(R.id.btn_delete);
 
             btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -20,4 +20,6 @@
     <dimen name="map_height_small">250dp</dimen>
     <dimen name="map_height_large">400dp</dimen>
     <dimen name="img_height">140dp</dimen>
+    <dimen name="card_view">5dp</dimen>
+    <dimen name="recycler_margin">70dp</dimen>
 </resources>

@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.example.assetsmanager.R;
+import com.example.assetsmanager.util.Constants;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -23,11 +24,7 @@ import java.util.Locale;
 
 
 public class SettingsFragment extends Fragment {
-    private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
     private Spinner spinnerLanguages;
-    private MaterialButton btnSave;
-
-    private final String[] langCodes = {"sr", "en"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,7 +33,7 @@ public class SettingsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
 
         spinnerLanguages = root.findViewById(R.id.spinner_language);
-        btnSave = root.findViewById(R.id.btn_save_language);
+        MaterialButton btnSave = root.findViewById(R.id.btn_save_language);
 
         List<String> languages = new ArrayList<>();
         languages.add(getString(R.string.serbian));
@@ -47,9 +44,9 @@ public class SettingsFragment extends Fragment {
         spinnerLanguages.setAdapter(adapter);
 
         SharedPreferences shPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
-        String lang = shPreferences.getString(SELECTED_LANGUAGE, Locale.getDefault().getLanguage());
+        String lang = shPreferences.getString(Constants.SELECTED_LANGUAGE, Locale.getDefault().getLanguage());
 
-        if(lang.equals(langCodes[0]))
+        if(lang.equals(Constants.langCodes[0]))
             spinnerLanguages.setSelection(0);
         else
             spinnerLanguages.setSelection(1);
@@ -72,7 +69,7 @@ public class SettingsFragment extends Fragment {
     private void setLocale(String language) {
         SharedPreferences shPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
         SharedPreferences.Editor editor = shPreferences.edit();
-        editor.putString(SELECTED_LANGUAGE, language);
+        editor.putString(Constants.SELECTED_LANGUAGE, language);
         editor.apply();
 
         Locale locale = new Locale(language);
